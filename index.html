@@ -19,6 +19,9 @@
     --dizziness: #1a6b9a;
     --dizziness-light: #eef5fb;
     --dizziness-border: #b8d4e8;
+    --insomnia: #5c3d8f;
+    --insomnia-light: #f3eefb;
+    --insomnia-border: #cdb8e8;
     --shadow: 0 4px 24px rgba(0,0,0,0.08);
     --radius: 20px;
   }
@@ -77,8 +80,9 @@
     display: flex;
     gap: 16px;
     width: 100%;
-    max-width: 520px;
+    max-width: 680px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .card {
@@ -114,6 +118,11 @@
   .card.dizziness:hover { border-color: var(--dizziness); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,107,154,0.15); }
   .card.dizziness:hover::before { opacity: 1; }
 
+  .card.insomnia { border-color: var(--insomnia-border); }
+  .card.insomnia::before { background: var(--insomnia-light); }
+  .card.insomnia:hover { border-color: var(--insomnia); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(92,61,143,0.15); }
+  .card.insomnia:hover::before { opacity: 1; }
+
   .card-emoji {
     font-size: 40px;
     margin-bottom: 12px;
@@ -129,6 +138,7 @@
 
   .card.headache .card-title { color: var(--headache); }
   .card.dizziness .card-title { color: var(--dizziness); }
+  .card.insomnia .card-title { color: var(--insomnia); }
 
   .card-desc {
     font-size: 12px;
@@ -150,6 +160,7 @@
 
   .card.headache .card-arrow { background: var(--headache); color: #fff; }
   .card.dizziness .card-arrow { background: var(--dizziness); color: #fff; }
+  .card.insomnia .card-arrow { background: var(--insomnia); color: #fff; }
 
   .disclaimer {
     margin-top: 32px;
@@ -198,6 +209,13 @@
       <div class="card-desc">天旋地轉、站不穩<br>頭重腳輕、飄浮感</div>
       <div class="card-arrow">前往填寫 →</div>
     </div>
+
+    <div class="card insomnia" onclick="openSurvey('insomnia')">
+      <div class="card-emoji">🌙</div>
+      <div class="card-title">失眠</div>
+      <div class="card-desc">難以入睡、易醒<br>睡眠品質差</div>
+      <div class="card-arrow">前往填寫 →</div>
+    </div>
   </div>
 
   <p class="disclaimer">⚠️ 若您出現劇烈頭痛、意識不清、肢體無力等緊急症狀，請立即告知醫護人員，勿自行填寫問卷。</p>
@@ -207,6 +225,7 @@
   const SURVEYS = {
     headache:  'https://www.surveycake.com/s/9qxe1',
     dizziness: 'https://docs.google.com/forms/d/1xVf7YKz2JR8-BW5WGjORoSUQFs8AohT1aCkIvFnw4Pg/viewform',
+    insomnia:  'https://sleep.mentalwe.com/scale/sleep-pattern/',
   };
 
   function openSurvey(type) {
